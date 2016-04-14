@@ -13,3 +13,7 @@
     web:
        host:  9080
        guest: 9080
+  synced_folder:
+    software:
+       local:   D:/Software
+       remote:  /opt/software
