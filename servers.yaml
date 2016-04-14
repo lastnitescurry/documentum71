@@ -1,0 +1,15 @@
+#servers.yaml.dev
+- name: documentum
+  box:  puppetlabs/centos-6.6-64-nocm
+  env:  dev
+  role: allinone
+  ram:  6288
+  cpus: 2
+  desc: Single stack, Oracle XE, Documentum 7.1 Content Server and Admin client on tomcat 7
+  forwarded_port:
+    web:
+       host:  8080
+       guest: 80
+    web:
+       host:  9080
+       guest: 9080
