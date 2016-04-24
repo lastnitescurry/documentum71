@@ -1,4 +1,4 @@
-# Reuse
+# Credit Where Due
 
 Based on [NREL project for creating images via packer](https://github.com/NREL/vagrant-boxes)
 
