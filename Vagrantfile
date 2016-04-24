@@ -47,8 +47,11 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   config.ssh.forward_agent = true
 
+  # TODO move to server configuration file
   # Reset UNIX users passwords
   # https://github.com/puphpet/packer-templates/blob/master/centos-6-x86_64/http/ks.cfg
   config.vm.provision :shell, :inline => "echo \"vagrant\"|passwd --stdin vagrant"
   config.vm.provision :shell, :inline => "echo \"vagrant\"|passwd --stdin root"
+  # Update software in virtual machine
+  config.vm.provision :shell, :inline => "yum --assumeyes update"
 end
