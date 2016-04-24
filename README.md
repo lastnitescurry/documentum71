@@ -21,10 +21,25 @@ As root, execute:
     cd /vagrant/puppet
     ./apply.sh
 
-###### References
+## References
+###### Masterless Puppet
 [NREL Packer Puppet](https://github.com/NREL/vagrant-boxes/blob/master/packer/scripts/puppet.sh)
 
-[Scottish Gov](https://inside.mygov.scot/2015/11/24/masterless-puppet)
+[MASTERLESS PUPPET AND DECLARATIVE PROVISIONING](https://inside.mygov.scot/2015/11/24/masterless-puppet)
 
 [Puppet 4.4 LINUX](https://docs.puppet.com/puppet/4.4/reference/install_linux.html)
 
+[Masterless Puppet with Vagrant](http://terrarum.net/blog/masterless-puppet-with-vagrant.html)
+
+
+##### Hiera
+[Using Hiera with Puppet](http://pierrerambaud.com/blog/devops/using-hiera-with-puppet)
+
+##### Hiera - Roles and Profiles
+[Deploying nginx with Puppet](https://blog.serverdensity.com/deploying-nginx-with-puppet)
+
+###### Puppet Modules
+[Etc Services](https://forge.puppetlabs.com/ccin2p3/etc_services)
+
+###### Other
+[My Gov Scotland - Continuous Delivery](https://inside.mygov.scot/2015/11/04/how-we-approach-continuous-delivery/index.html)

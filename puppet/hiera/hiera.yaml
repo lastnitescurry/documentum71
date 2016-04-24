@@ -7,7 +7,9 @@
   :datadir: "/vagrant/puppet/hiera"
 
 :hierarchy:
-  - "%{machine_env}/%{machine_role}"
+#  - "%{machine_env}/%{machine_role}"
+  - "hosts/%{hostname}"
+#  - "roles/%{role}"
   - common
 
 :merge_behavior: deeper

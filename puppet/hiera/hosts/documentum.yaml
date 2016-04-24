@@ -1,0 +1,22 @@
+---
+
+classes:
+  - etc_services::hiera
+
+etc_services:
+  farrengold/tcp:
+    ensure:   present
+    port:     '60000'
+    comment:  EMC Documentum Repository - farrengold
+  farrengold/udp:
+    ensure:   present
+    port:     '60000'
+    comment:  EMC Documentum Repository - farrengold
+  farrengold_s/tcp:
+    ensure:   present
+    port:     '60001'
+    comment:  EMC Documentum Repository - farrengold
+  farrengold_s/udp:
+    ensure:   present
+    port:     '60001'
+    comment:  EMC Documentum Repository - farrengold
