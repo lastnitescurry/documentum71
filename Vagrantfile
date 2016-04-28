@@ -15,8 +15,8 @@ servers = YAML.load_file(serversFile)
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # Update virutal box additions
-  config.vbguest.no_remote = true
-  config.vbguest.no_install = true
+#  config.vbguest.no_remote = true
+#  config.vbguest.no_install = true
 
   servers.each do |server|
     config.vm.define server["name"] do |cfg|
