@@ -17,3 +17,5 @@ puppet module install deric-accounts
 puppet module install tedivm-hieratic
 #https://forge.puppet.com/puppetlabs/firewall
 puppet module install puppetlabs-firewall
+
+puppet module install petems-swap_file

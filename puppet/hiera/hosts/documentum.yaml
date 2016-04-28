@@ -3,6 +3,7 @@
 classes:
   - etc_services::hiera
   - oracle::xe::server
+  - swap_file
 
 etc_services:
   farrengold/tcp:
@@ -23,6 +24,7 @@ etc_services:
     comment:  EMC Documentum Repository - farrengold
 
 # http://www.davidghedini.com/pg/entry/install_oracle_11g_xe_on
+# http://docs.oracle.com/cd/E17781_01/install.112/e18802/toc.htm#XEINL110
 package:
   libaio:
     ensure:     installed
@@ -46,3 +48,7 @@ oracle::xe::server::listner_port: 1521
 oracle::xe::server::password:     manager
 oracle::xe::server::dbenable:     y
 oracle::xe::server::rpm_source:   /opt/software/Oracle/Database/oracle-xe-11.2.0-1.0.x86_64.rpm
+
+swap_file::files:
+  'default':
+    ensure: 'present'

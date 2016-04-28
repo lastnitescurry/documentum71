@@ -20,12 +20,12 @@
   provision:
     remove_existing_swap_file:
       inline:   swapoff -v /dev/dm-1
-    swap_2gb_file:
-      inline:   dd if=/dev/zero of=/swapfile bs=1024 count=2048k
-    format:
-      inline:   mkswap /swapfile
-    activate:
-      inline:   swapon /swapfile
+#    swap_2gb_file:
+#      inline:   dd if=/dev/zero of=/swapfile bs=1024 count=2048k
+#    format:
+#      inline:   mkswap /swapfile
+#    activate:
+#      inline:   swapon /swapfile
     report:
       inline:   swapon -s
 #    software_update:
