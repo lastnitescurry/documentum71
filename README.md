@@ -2,17 +2,25 @@
 
 Configure documentum on a single server
 
+## Provisioned Application URLS
+
+### Oracle XE Server
++ [Oracle XE](http://127.0.0.1:8080/apex/f?p=4950:1)
+
+
 ## Puppet
 ###### Install Masterless Puppet
 As root, execute:
 
     cd /vagrant/packer/scripts
+    chmod u+x *.sh
     ./puppet.sh
 
 ###### Install Puppet Modules
 As root, execute:
 
     cd /vagrant/puppet
+    chmod u+x *.sh
     ./setup_modules.sh
 
 ###### Apply Configurations

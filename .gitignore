@@ -34,6 +34,12 @@ build/
 # unless supporting rvm < 1.11.0 or doing something fancy, ignore this:
 .rvmrc
 
-# 
+#
 /apache-tomcat-7.0.65/
 .vagrant
+
+# Puppet modules in development
+/puppet/modules
+
+# Puppet modules in development
+/git_client

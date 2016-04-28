@@ -44,6 +44,12 @@ FIXME:
     source /etc/bash_completion.d/git-prompt.sh
 
 ## Download Modules for development
+##### On Cloud Image
+As root, execute:
+
+    cd /
+    git clone https://github.com/lastnitescurry/documentum71.git vagrant
+
 ##### ETC Services
 As root, execute:
 
@@ -58,8 +64,8 @@ As root, execute:
 
     mkdir -p /vagrant/puppet/modules
     cd /vagrant/puppet/modules
-    git clone https://github.com/lastnitescurry/oracle_xe.git
-    cd /vagrant/puppet/modules/oracle_xe
+    git clone https://github.com/lastnitescurry/oracle.git
+    cd /vagrant/puppet/modules/oracle
     git checkout develop
 
 

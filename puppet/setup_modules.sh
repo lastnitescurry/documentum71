@@ -13,7 +13,7 @@ puppet module install mthibaut-users
 puppet module install deric-accounts
 
 # Create Resources
-#https://forge.puppet.com/tedivm/hieratic
+# https://forge.puppet.com/tedivm/hieratic
 puppet module install tedivm-hieratic
 #https://forge.puppet.com/puppetlabs/firewall
 puppet module install puppetlabs-firewall

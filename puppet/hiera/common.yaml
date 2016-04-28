@@ -4,25 +4,6 @@ classes:
 #  - accounts
   - hieratic
 
-# https://forge.puppetlabs.com/ccin2p3/etc_services/readme
-etc_services:
-  farrengold/tcp:
-    ensure:   present
-    port:     '60000'
-    comment:  EMC Documentum Repository - farrengold
-  farrengold/udp:
-    ensure:   present
-    port:     '60000'
-    comment:  EMC Documentum Repository - farrengold
-  farrengold_s/tcp:
-    ensure:   present
-    port:     '60001'
-    comment:  EMC Documentum Repository - farrengold
-  farrengold_s/udp:
-    ensure:   present
-    port:     '60001'
-    comment:  EMC Documentum Repository - farrengold
-
 group:
   wheel:
     ensure:     present
@@ -81,23 +62,8 @@ user:
                 - Group[wheel]
 
 package:
-  libaio:
-    ensure:     installed
-  bc:
-    ensure:     installed
-  flex:
-    ensure:     installed
   unzip:
     ensure:     installed
-#  jdk1.8.0_65:
-#    ensure:     installed
-#    provider:   rpm
-#    source:     '/software/Oracle/Java/jdk-8u65-linux-x64.rpm'
-# Documentum < DFC 7.2, fails with Java 1.8
-#  jdk-7u79-linux-x64:
-#    ensure:     installed
-#    provider:   rpm
-#    source:     '/opt/software/Oracle/Java/jdk-7u79-linux-x64.rpm'
 
 service:
   iptables:

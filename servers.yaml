@@ -9,7 +9,7 @@
   forwarded_port:
     web:
        host:  8080
-       guest: 80
+       guest: 8080
     cs_jms:
        host:  9080
        guest: 9080
@@ -28,8 +28,14 @@
       inline:   swapon /swapfile
     report:
       inline:   swapon -s
-    software_update:
-      inline:   yum --assumeyes update
+#    software_update:
+#      inline:   yum --assumeyes update
+    git_client:
+      inline:   yum --assumeyes install git
+    puppet_master:
+      inline:   cd /vagrant/packer/scripts;/vagrant/packer/scripts/puppet.sh
+    puppet_modules:
+      inline:   cd /vagrant/puppet;/vagrant/puppet/setup_modules.sh
 
 # https://www.digitalocean.com/community/tutorials/how-to-add-swap-on-centos-6
 # https://www.centos.org/docs/5/html/Deployment_Guide-en-US/s1-swap-adding.html
