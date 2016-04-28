@@ -2,8 +2,6 @@
 
 classes:
   - etc_services::hiera
-  - oracle::xe::server
-  - swap_file
 
 etc_services:
   farrengold/tcp:
@@ -23,32 +21,15 @@ etc_services:
     port:     '60001'
     comment:  EMC Documentum Repository - farrengold
 
-# http://www.davidghedini.com/pg/entry/install_oracle_11g_xe_on
-# http://docs.oracle.com/cd/E17781_01/install.112/e18802/toc.htm#XEINL110
+# Check installed
+# yum list installed | grep jdk
 package:
-  libaio:
-    ensure:     installed
-  bc:
-    ensure:     installed
-  flex:
-    ensure:     installed
 #  jdk1.8.0_65:
 #    ensure:     installed
 #    provider:   rpm
 #    source:     '/software/Oracle/Java/jdk-8u65-linux-x64.rpm'
 # Documentum < DFC 7.2, fails with Java 1.8
-#  jdk-7u79-linux-x64:
-#    ensure:     installed
-#    provider:   rpm
-#    source:     '/opt/software/Oracle/Java/jdk-7u79-linux-x64.rpm'
-
-# https://github.com/ismaild/vagrant-centos-oracle/blob/master/oracle/xe.rsp
-oracle::xe::server::http_port:    8080
-oracle::xe::server::listner_port: 1521
-oracle::xe::server::password:     manager
-oracle::xe::server::dbenable:     y
-oracle::xe::server::rpm_source:   /opt/software/Oracle/Database/oracle-xe-11.2.0-1.0.x86_64.rpm
-
-swap_file::files:
-  'default':
-    ensure: 'present'
+  jdk:
+    ensure:     1.7.0_79-fcs
+    provider:   rpm
+    source:     '/opt/software/Oracle/Java/jdk-7u79-linux-x64.rpm'

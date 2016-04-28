@@ -10,6 +10,7 @@
 #  - "%{machine_env}/%{machine_role}"
   - "hosts/%{hostname}"
 #  - "roles/%{role}"
+  - roles/database
   - common
 
 :merge_behavior: deeper

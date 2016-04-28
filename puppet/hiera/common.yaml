@@ -1,7 +1,6 @@
 ---
 
 classes:
-#  - accounts
   - hieratic
 
 group:
@@ -29,11 +28,6 @@ user:
     ensure:     present
     managehome: true
     gid:        wheel
-  oracle:
-    ensure:     present
-    managehome: true
-    comment:    Oracle Install user
-    gid:        dba
   dmadmin:
     ensure:     present
     managehome: true

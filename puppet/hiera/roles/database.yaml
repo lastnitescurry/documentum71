@@ -1,0 +1,58 @@
+---
+
+classes:
+  - oracle::xe::server
+  - swap_file
+
+group:
+  dba:
+    ensure:     present
+
+user:
+  oracle:
+    ensure:     present
+    managehome: true
+    comment:    Oracle Install user
+    gid:        dba
+
+# http://www.davidghedini.com/pg/entry/install_oracle_11g_xe_on
+# http://docs.oracle.com/cd/E17781_01/install.112/e18802/toc.htm#XEINL110
+package:
+  libaio:
+    ensure:     installed
+    before:     Package[oracle-xe]
+  bc:
+    ensure:     installed
+    before:     Package[oracle-xe]
+  flex:
+    ensure:     installed
+    before:     Package[oracle-xe]
+  oracle-xe:
+    ensure:     11.2.0-1.0
+    provider:   rpm
+    source:     "/opt/software/Oracle/Database/oracle-xe-11.2.0-1.0.x86_64.rpm"
+
+file:
+  '/u01':
+    ensure:     directory
+  '/u01/app':
+    ensure:     directory
+  '/u01/app/oracle':
+    ensure:     directory
+    owner:      oracle
+    group:      dba
+    mode:       '775'
+
+# Oracle XE Requires at least 2GB of swap
+swap_file::files:
+  'default':
+    ensure:     present
+    before:     Package[oracle-xe]
+
+# https://docs.puppet.com/hiera/3.1/puppet.html#automatic-parameter-lookup
+# https://github.com/ismaild/vagrant-centos-oracle/blob/master/oracle/xe.rsp
+#oracle::xe::server::http_port:    8080
+#oracle::xe::server::listner_port: 1521
+oracle::xe::server::password:     helloWorldToday
+#oracle::xe::server::dbenable:     y
+#oracle::xe::server::rpm_source:   /opt/software/Oracle/Database/oracle-xe-11.2.0-1.0.x86_64.rpm
