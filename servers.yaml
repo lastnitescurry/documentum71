@@ -7,7 +7,7 @@
   cpus: 2
   desc: Single stack, Oracle XE, Documentum 7.1 Content Server and Admin client on tomcat 7
   forwarded_port:
-    web:
+    oracle_web:
        host:  8080
        guest: 8080
     cs_jms:
@@ -18,16 +18,16 @@
        local:   D:/Software
        remote:  /opt/software
   provision:
-    remove_existing_swap_file:
-      inline:   swapoff -v /dev/dm-1
+#    remove_existing_swap_file:
+#      inline:   swapoff -v /dev/dm-1
 #    swap_2gb_file:
 #      inline:   dd if=/dev/zero of=/swapfile bs=1024 count=2048k
-#    format:
+#    swap_format:
 #      inline:   mkswap /swapfile
-#    activate:
+#    swap_activate:
 #      inline:   swapon /swapfile
-    report:
-      inline:   swapon -s
+#    swap_report:
+#      inline:   swapon -s
 #    software_update:
 #      inline:   yum --assumeyes update
     git_client:
