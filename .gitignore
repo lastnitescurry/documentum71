@@ -43,3 +43,6 @@ build/
 
 # Puppet modules in development
 /git_client
+
+# documentum data folder
+/repositorydata

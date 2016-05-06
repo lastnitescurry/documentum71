@@ -1,6 +1,11 @@
 # documentum71
 
-Configure documentum on a single server
+Documentum stack on a single server. Based on [dctm-vagrant-puppet](https://github.com/lastnitescurry/dctm-vagrant-puppet) project. 
+
+Now its time to 
++ move hard coded values out of modules and into hiera
++ break the blob of modules into some reusable chunks
+
 
 ## Provisioned Application URLS
 

@@ -68,7 +68,14 @@ As root, execute:
     cd /vagrant/puppet/modules/oracle
     git checkout develop
 
+##### Documentum
+As root, execute:
 
+    mkdir -p /vagrant/puppet/modules
+    cd /vagrant/puppet/modules
+    git clone https://github.com/lastnitescurry/documentum.git
+    cd /vagrant/puppet/modules/documentum
+    git checkout develop
 
 ## References
 ###### Git Client
