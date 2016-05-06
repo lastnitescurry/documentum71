@@ -10,7 +10,8 @@
 #  - "%{machine_env}/%{machine_role}"
   - "hosts/%{hostname}"
 #  - "roles/%{role}"
-  - roles/database
+  - roles/documentum # this is a nasty hard code to demo role seperation on one server
+  - roles/database   # this is a nasty hard code to demo role seperation on one server
   - common
 
 :merge_behavior: deeper

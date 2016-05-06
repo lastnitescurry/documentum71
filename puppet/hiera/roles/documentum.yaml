@@ -1,0 +1,113 @@
+---
+
+# Puppet Classes to load and execute
+classes:
+  - etc_services::hiera
+  - documentum
+
+# UNIX groups
+group:
+  dba:
+    ensure:     present
+
+# UNIX users
+user:
+  dmadmin:
+    ensure:     present
+    managehome: true
+    comment:    Documentum Content Server Install Owner
+    shell:      '/bin/bash'
+    password:   "$1$uwPiRsox$GEe9mUGEav92rx4ooq6Nf." # vagrant
+    gid:        dmadmin
+    groups:
+                - dba
+                - wheel
+    require:
+                - Group[dba]
+                - Group[wheel]
+
+
+# UNIX Packages
+# Check installed
+# yum list installed | grep jdk
+package:
+#  jdk1.8.0_65:
+#    ensure:     installed
+#    provider:   rpm
+#    source:     '/software/Oracle/Java/jdk-8u65-linux-x64.rpm'
+# Documentum < DFC 7.2, fails with Java 1.8
+  jdk:
+    ensure:     1.7.0_79-fcs
+    provider:   rpm
+    source:     /opt/software/Oracle/Java/jdk-7u79-linux-x64.rpm
+
+# UNIX folders and files
+file:
+  '/u01':
+    ensure:     directory
+  '/u01/app':
+    ensure:     directory
+  '/u01/app/documentum':
+    ensure:     directory
+    owner:      dmadmin
+    group:      dmadmin
+    mode:       '775'
+  '/u01/app/documentum/shared':
+    ensure:     directory
+    owner:      dmadmin
+    group:      dmadmin
+    mode:       '775'
+  '/u01/app/documentum/shared/config':
+    ensure:     directory
+    owner:      dmadmin
+    group:      dmadmin
+    mode:       '775'
+  '/home/dmadmin':
+    ensure:     directory
+    owner:      dmadmin
+    group:      dmadmin
+    mode:       '775'
+  '/home/dmadmin/sig':
+    ensure:     directory
+    owner:      dmadmin
+    group:      dmadmin
+    mode:       '775'
+  '/home/dmadmin/sig/cs':
+    ensure:     directory
+    owner:      dmadmin
+    group:      dmadmin
+    mode:       '775'
+  '/home/dmadmin/sig/csp':
+    ensure:     directory
+    owner:      dmadmin
+    group:      dmadmin
+    mode:       '775'
+  '/home/dmadmin/sig/docbroker':
+    ensure:     directory
+    owner:      dmadmin
+    group:      dmadmin
+    mode:       '775'
+  '/home/dmadmin/sig/repository':
+    ensure:     directory
+    owner:      dmadmin
+    group:      dmadmin
+    mode:       '775'
+
+# UNIX services. /etc/services file
+etc_services:
+  farrengold/tcp:
+    ensure:   present
+    port:     '60000'
+    comment:  EMC Documentum Repository - farrengold
+  farrengold/udp:
+    ensure:   present
+    port:     '60000'
+    comment:  EMC Documentum Repository - farrengold
+  farrengold_s/tcp:
+    ensure:   present
+    port:     '60001'
+    comment:  EMC Documentum Repository - farrengold
+  farrengold_s/udp:
+    ensure:   present
+    port:     '60001'
+    comment:  EMC Documentum Repository - farrengold

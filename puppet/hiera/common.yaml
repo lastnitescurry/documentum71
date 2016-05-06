@@ -3,6 +3,7 @@
 classes:
   - hieratic
 
+# Add Groups to all roles regardless 
 group:
   wheel:
     ensure:     present
@@ -59,6 +60,9 @@ package:
   unzip:
     ensure:     installed
 
+# https://github.com/puppetlabs/puppetlabs-firewall/blob/master/manifests/init.pp
+firewall::ensure: stopped
+
 service:
   iptables:
     ensure:     stopped
@@ -72,56 +76,6 @@ file:
     ensure:     directory
   '/u01/app':
     ensure:     directory
-  '/u01/app/oracle':
-    ensure:     directory
-    owner:      oracle
-    group:      dba
-    mode:       '775'
-  '/u01/app/documentum':
-    ensure:     directory
-    owner:      dmadmin
-    group:      dmadmin
-    mode:       '775'
-  '/u01/app/documentum/shared':
-    ensure:     directory
-    owner:      dmadmin
-    group:      dmadmin
-    mode:       '775'
-  '/u01/app/documentum/shared/config':
-    ensure:     directory
-    owner:      dmadmin
-    group:      dmadmin
-    mode:       '775'
-  '/home/dmadmin':
-    ensure:     directory
-    owner:      dmadmin
-    group:      dmadmin
-    mode:       '775'
-  '/home/dmadmin/sig':
-    ensure:     directory
-    owner:      dmadmin
-    group:      dmadmin
-    mode:       '775'
-  '/home/dmadmin/sig/cs':
-    ensure:     directory
-    owner:      dmadmin
-    group:      dmadmin
-    mode:       '775'
-  '/home/dmadmin/sig/csp':
-    ensure:     directory
-    owner:      dmadmin
-    group:      dmadmin
-    mode:       '775'
-  '/home/dmadmin/sig/docbroker':
-    ensure:     directory
-    owner:      dmadmin
-    group:      dmadmin
-    mode:       '775'
-  '/home/dmadmin/sig/repository':
-    ensure:     directory
-    owner:      dmadmin
-    group:      dmadmin
-    mode:       '775'
   '/u01/app/apache-tomcat':
     ensure:     directory
     owner:      tomcat

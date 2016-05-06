@@ -1,13 +1,15 @@
 ---
 
+# Puppet Classes to load and execute
 classes:
   - oracle::xe::server
   - swap_file
-
+# UNIX groups
 group:
   dba:
     ensure:     present
 
+# UNIX users
 user:
   oracle:
     ensure:     present
@@ -15,6 +17,8 @@ user:
     comment:    Oracle Install user
     gid:        dba
 
+
+# UNIX Packages
 # http://www.davidghedini.com/pg/entry/install_oracle_11g_xe_on
 # http://docs.oracle.com/cd/E17781_01/install.112/e18802/toc.htm#XEINL110
 package:
@@ -30,8 +34,9 @@ package:
   oracle-xe:
     ensure:     11.2.0-1.0
     provider:   rpm
-    source:     "/opt/software/Oracle/Database/oracle-xe-11.2.0-1.0.x86_64.rpm"
+    source:     /opt/software/Oracle/Database/oracle-xe-11.2.0-1.0.x86_64.rpm
 
+# UNIX folders and files
 file:
   '/u01':
     ensure:     directory
@@ -43,6 +48,7 @@ file:
     group:      dba
     mode:       '775'
 
+# UNIX swap configuration
 # Oracle XE Requires at least 2GB of swap
 swap_file::files:
   'default':
@@ -53,6 +59,6 @@ swap_file::files:
 # https://github.com/ismaild/vagrant-centos-oracle/blob/master/oracle/xe.rsp
 #oracle::xe::server::http_port:    8080
 #oracle::xe::server::listner_port: 1521
-oracle::xe::server::password:     helloWorldToday
+#oracle::xe::server::password:     helloWorldToday
 #oracle::xe::server::dbenable:     y
 #oracle::xe::server::rpm_source:   /opt/software/Oracle/Database/oracle-xe-11.2.0-1.0.x86_64.rpm
