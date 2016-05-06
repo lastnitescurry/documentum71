@@ -4,6 +4,7 @@
 classes:
   - oracle::xe::server
   - swap_file
+
 # UNIX groups
 group:
   dba:
@@ -53,6 +54,7 @@ file:
 swap_file::files:
   'default':
     ensure:     present
+    timeout:    3000
     before:     Package[oracle-xe]
 
 # https://docs.puppet.com/hiera/3.1/puppet.html#automatic-parameter-lookup

@@ -7,12 +7,10 @@ classes:
 group:
   wheel:
     ensure:     present
-  dba:
-    ensure:     present
-  dmadmin:
-    ensure:     present
-  tomcat:
-    ensure:     present
+#  dba:
+#    ensure:     present
+#  dmadmin:
+#    ensure:     present
 
 # https://forge.puppet.com/mthibaut/users
 #users_sysadmins:
@@ -29,32 +27,6 @@ user:
     ensure:     present
     managehome: true
     gid:        wheel
-  dmadmin:
-    ensure:     present
-    managehome: true
-    comment:    Documentum Content Server Install Owner
-    shell:      '/bin/bash'
-    password:   "$1$uwPiRsox$GEe9mUGEav92rx4ooq6Nf." # vagrant
-    gid:        dmadmin
-    groups:
-                - dba
-                - wheel
-    require:
-                - Group[dba]
-                - Group[wheel]
-  tomcat:
-    ensure:     present
-    managehome: true
-    comment:    Tomcat Install Owner
-    shell:      '/bin/bash'
-    password:   "$1$uwPiRsox$GEe9mUGEav92rx4ooq6Nf." # vagrant
-    gid:        tomcat
-    groups:
-                - dmadmin
-                - wheel
-    require:
-                - Group[dmadmin]
-                - Group[wheel]
 
 package:
   unzip:
@@ -76,27 +48,6 @@ file:
     ensure:     directory
   '/u01/app':
     ensure:     directory
-  '/u01/app/apache-tomcat':
-    ensure:     directory
-    owner:      tomcat
-    group:      tomcat
-    mode:       '775'
-  '/home/tomcat/apache-tomcat':
-    ensure:     link
-    owner:      tomcat
-    group:      tomcat
-    mode:       '775'
-    target:     '/u01/app/apache-tomcat'
-  '/u01/app/jenkins':
-    ensure:     directory
-    owner:      tomcat
-    group:      tomcat
-    mode:       '775'
-  '/u01/app/jenkins/plugins':
-    ensure:     directory
-    owner:      tomcat
-    group:      tomcat
-    mode:       '775'
 
 # Oracle Client settings for Documentum Content Servers
 oracle::xe::client::db_port: '1521'

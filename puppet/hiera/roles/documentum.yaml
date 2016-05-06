@@ -9,6 +9,8 @@ classes:
 group:
   dba:
     ensure:     present
+  dmadmin:
+    ensure:     present
 
 # UNIX users
 user:
@@ -25,21 +27,6 @@ user:
     require:
                 - Group[dba]
                 - Group[wheel]
-
-
-# UNIX Packages
-# Check installed
-# yum list installed | grep jdk
-package:
-#  jdk1.8.0_65:
-#    ensure:     installed
-#    provider:   rpm
-#    source:     '/software/Oracle/Java/jdk-8u65-linux-x64.rpm'
-# Documentum < DFC 7.2, fails with Java 1.8
-  jdk:
-    ensure:     1.7.0_79-fcs
-    provider:   rpm
-    source:     /opt/software/Oracle/Java/jdk-7u79-linux-x64.rpm
 
 # UNIX folders and files
 file:

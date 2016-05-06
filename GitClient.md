@@ -77,6 +77,15 @@ As root, execute:
     cd /vagrant/puppet/modules/documentum
     git checkout develop
 
+##### ApplicationServer
+As root, execute:
+
+    mkdir -p /vagrant/puppet/modules
+    cd /vagrant/puppet/modules
+    git clone https://github.com/lastnitescurry/applicationserver.git
+    cd /vagrant/puppet/modules/applicationserver
+    git checkout develop
+
 ## References
 ###### Git Client
 [GIT tips and tricks](https://git-scm.com/book/en/v1/Git-Basics-Tips-and-Tricks)
