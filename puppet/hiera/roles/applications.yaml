@@ -1,0 +1,64 @@
+---
+
+# Puppet Classes to load and execute
+classes:
+  - applicationserver
+
+# UNIX groups
+group:
+  dmadmin:
+    ensure:     present
+  tomcat:
+    ensure:     present
+
+# UNIX users
+user:
+  tomcat:
+    ensure:     present
+    managehome: true
+    comment:    Tomcat Install Owner
+    shell:      '/bin/bash'
+    password:   "$1$uwPiRsox$GEe9mUGEav92rx4ooq6Nf." # vagrant
+    gid:        tomcat
+    groups:
+                - dmadmin
+                - wheel
+    require:
+                - Group[dmadmin]
+                - Group[wheel]
+
+# UNIX Packages
+package:
+#  jdk1.8.0_65:
+#    ensure:     installed
+#    provider:   rpm
+#    source:     '/software/Oracle/Java/jdk-8u65-linux-x64.rpm'
+# Documentum < DFC 7.2, fails with Java 1.8
+  jdk:
+    ensure:     1.7.0_79-fcs
+    provider:   rpm
+    source:     /opt/software/Oracle/Java/jdk-7u79-linux-x64.rpm
+
+# UNIX folders and files
+file:
+  '/u02':
+    ensure:     directory
+  '/u02/app':
+    ensure:     directory
+  '/u02/app/apache-tomcat':
+    ensure:     directory
+    owner:      tomcat
+    group:      tomcat
+    mode:       '775'
+  '/home/tomcat/apache-tomcat':
+    ensure:     link
+    owner:      tomcat
+    group:      tomcat
+    mode:       '775'
+    target:     '/u02/app/apache-tomcat'
+
+
+# Configure Tomcat
+applicationserver::http_port:     7070
+applicationserver::catalina_root: /u02/app/apache-tomcat
+
