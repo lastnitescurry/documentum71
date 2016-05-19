@@ -4,6 +4,7 @@
   env:  dev
   role: allinone
   ram:  6288
+  vram: 128
   cpus: 2
   desc: Single stack, Oracle XE, Documentum 7.1 Content Server and Admin client on tomcat 7
   forwarded_port:
@@ -13,6 +14,9 @@
     cs_jms:
        host:  9080
        guest: 9080
+    apps:
+       host:  7070
+       guest: 7070
   synced_folder:
     software:
        local:   D:/Software
@@ -33,9 +37,11 @@
     git_client:
       inline:   yum --assumeyes install git
     puppet_master:
-      inline:   cd /vagrant/packer/scripts;/vagrant/packer/scripts/puppet.sh
+      inline:   cd /vagrant/packer/scripts;chmod u+x *.sh;./puppet.sh
     puppet_modules:
-      inline:   cd /vagrant/puppet;/vagrant/puppet/setup_modules.sh
+      inline:   cd /vagrant/puppet;chmod u+x *.sh;./setup_modules.sh
+    puppet_apply:
+      inline:   cd /vagrant/puppet;chmod u+x *.sh;./apply.sh
 
 # https://www.digitalocean.com/community/tutorials/how-to-add-swap-on-centos-6
 # https://www.centos.org/docs/5/html/Deployment_Guide-en-US/s1-swap-adding.html

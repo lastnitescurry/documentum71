@@ -14,9 +14,6 @@ serversFile = File.exists?("servers.yaml") ? "servers.yaml" : directory.join("se
 servers = YAML.load_file(serversFile)
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
-  # Update virutal box additions
-#  config.vbguest.no_remote = true
-#  config.vbguest.no_install = true
 
   servers.each do |server|
     config.vm.define server["name"] do |cfg|
@@ -28,8 +25,14 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       cfg.vm.hostname = server["name"]
 
       cfg.vm.provider "virtualbox" do |v|
-        v.memory  = server["ram"] || "2048"
-        v.cpus = server["cpu"] || "2"
+        v.customize [
+          "modifyvm",      :id,
+          "--cpus",        server["cpu"]  || "2",
+          "--memory",      server["ram"]  || "2048",
+          "--name",        server["name"],
+          "--description", server["desc"] || "Yet another Vagrant Controlled Cow",
+          "--vram",        server["vram"] || "256",
+        ]
       end
 
       (server['forwarded_port'] || []).each do |i, port|
