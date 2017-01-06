@@ -3,7 +3,7 @@
 classes:
   - hieratic
 
-# Add Groups to all roles regardless 
+# Add Groups to all roles regardless
 group:
   wheel:
     ensure:     present
@@ -12,21 +12,6 @@ group:
 #  dmadmin:
 #    ensure:     present
 
-# https://forge.puppet.com/mthibaut/users
-#users_sysadmins:
-#    john:
-#        ensure: present
-#        uid: 1000
-#        gid: staff
-#        groups: - wheel
-#        comment: John Doe
-#        managehome: true
-# https://forge.puppet.com/deric/accounts
-user:
-  brian:
-    ensure:     present
-    managehome: true
-    gid:        wheel
 
 package:
   unzip:
@@ -49,6 +34,7 @@ file:
   '/u01/app':
     ensure:     directory
 
-# Oracle Client settings for Documentum Content Servers
-oracle::xe::client::db_port: '1521'
-oracle::xe::client::db_host: 'database'
+hosts:
+  host1.example.com:
+    ip: 10.0.0.1
+    host_aliases: host1

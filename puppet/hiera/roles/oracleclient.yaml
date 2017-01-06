@@ -1,0 +1,74 @@
+  ---
+
+# Puppet Classes to load and execute
+classes:
+  - oracle::12c::client
+  - swap_file
+
+# UNIX groups
+group:
+  dba:
+    ensure:     present
+group:
+  oinstall:
+    ensure:     present
+
+# UNIX users
+user:
+  oracle:
+    ensure:     present
+    managehome: true
+    comment:    Oracle Install user
+    shell:      '/bin/bash'
+    password:   "$1$uwPiRsox$GEe9mUGEav92rx4ooq6Nf." # vagrant
+    gid:        dba
+    groups:
+                - dba
+                - oinstall
+
+# UNIX folders and files
+file:
+  '/u01':
+    ensure:     directory
+  '/u01/app':
+    ensure:     directory
+  '/u01/app/oracle':
+    ensure:     directory
+    owner:      oracle
+    group:      dba
+    mode:       '775'
+  '/u01/app/oraInventory':
+    ensure:     directory
+    owner:      oracle
+    group:      dba
+    mode:       '775'
+  '/u01/app/oracle/product':
+    ensure:     directory
+    owner:      oracle
+    group:      dba
+    mode:       '775'
+  '/u01/app/oracle/product/12.1':
+    ensure:     directory
+    owner:      oracle
+    group:      dba
+    mode:       '775'
+  '/u01/app/oracle/product/12.1/client':
+    ensure:     directory
+    owner:      oracle
+    group:      dba
+    mode:       '775'
+  '/home/oracle':
+    ensure:     directory
+    owner:      oracle
+    group:      dba
+    mode:       '775'
+  '/home/oracle/sig':
+    ensure:     directory
+    owner:      oracle
+    group:      dba
+    mode:       '775'
+  '/home/oracle/sig/client':
+    ensure:     directory
+    owner:      oracle
+    group:      dba
+    mode:       '775'
