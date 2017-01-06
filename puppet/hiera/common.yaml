@@ -2,6 +2,7 @@
 
 classes:
   - hieratic
+  - baseconfig
 
 # Add Groups to all roles regardless
 group:
