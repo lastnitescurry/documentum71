@@ -39,9 +39,6 @@ build/
 .vagrant
 
 # Puppet modules in development
-/puppet/modules
-
-# Puppet modules in development
 /git_client
 
 # documentum data folder
