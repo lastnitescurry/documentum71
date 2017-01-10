@@ -28,6 +28,23 @@ user:
                 - Group[dba]
                 - Group[wheel]
 
+documentum::contentserver::repository:
+  ensure:                'file'
+  documentum:            '/u01/app/documentum'
+  version:               '7.3'
+  installer:             '/u01/app/documentum/product/7.3/install'
+  docbroker_port:        '1489'
+  docbroker_name:        'Docbroker'
+  repository_name:       'FCMS'
+  repository_id:         '20170110'
+  repository_service:    'dm_fcms'
+  repository_desc:       'auto repo build'
+  bof_registry_password: '1234qwer'
+  db_user:               'fcms_repo'
+  db_password:           'fcms_repo'
+  db_connection:         'orcl'
+  db_indexspace:         'fcms_repo'
+
 # UNIX folders and files
 file:
   '/u01':
@@ -82,19 +99,19 @@ file:
 
 # UNIX services. /etc/services file
 etc_services:
-  farrengold/tcp:
+  dm_fcms/tcp:
     ensure:   present
     port:     '60000'
-    comment:  EMC Documentum Repository - farrengold
-  farrengold/udp:
+    comment:  EMC Documentum Repository - fcms
+  dm_fcms/udp:
     ensure:   present
     port:     '60000'
-    comment:  EMC Documentum Repository - farrengold
-  farrengold_s/tcp:
+    comment:  EMC Documentum Repository - fcms
+  dm_fcms_s/tcp:
     ensure:   present
     port:     '60001'
-    comment:  EMC Documentum Repository - farrengold
-  farrengold_s/udp:
+    comment:  EMC Documentum Repository - fcms
+  dm_fcms_s/udp:
     ensure:   present
     port:     '60001'
-    comment:  EMC Documentum Repository - farrengold
+    comment:  EMC Documentum Repository - fcms
