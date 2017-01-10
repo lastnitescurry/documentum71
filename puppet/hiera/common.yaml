@@ -36,6 +36,6 @@ file:
     ensure:     directory
 
 hosts:
-  host1.example.com:
-    ip: 10.0.0.1
-    host_aliases: host1
+  orcl.localdomain:
+    ip: 172.16.209.230
+    host_aliases: db
