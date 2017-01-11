@@ -39,3 +39,9 @@ hosts:
   ol7.localdomain:
     ip: 172.16.209.230
     host_aliases: db
+  dctm.local:
+    ip: 172.16.209.240
+    host_aliases: dctm
+  xplore.local:
+    ip: 172.16.209.238
+    host_aliases: xplore

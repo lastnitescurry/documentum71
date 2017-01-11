@@ -1,0 +1,51 @@
+  ---
+
+# Puppet Classes to load and execute
+classes:
+
+# UNIX users
+user:
+  xplore:
+    ensure:     present
+    managehome: true
+    comment:    xPlore Install user
+    shell:      '/bin/bash'
+    password:   "$1$uwPiRsox$GEe9mUGEav92rx4ooq6Nf." # vagrant
+    gid:        dba
+
+# UNIX folders and files
+file:
+  '/u01':
+    ensure:     directory
+  '/u01/app':
+    ensure:     directory
+  '/u01/app/xplore':
+    ensure:     directory
+    owner:      xplore
+    group:      xplore
+    mode:       '775'
+  '/home/xplore':
+    ensure:     directory
+    owner:      xplore
+    group:      xplore
+    mode:       '775'
+  '/home/xplore/sig':
+    ensure:     directory
+    owner:      xplore
+    group:      xplore
+    mode:       '775'
+  '/home/xplore/sig/xplore':
+    ensure:     directory
+    owner:      xplore
+    group:      xplore
+    mode:       '775'
+  '/home/xplore/sig/dsearch':
+    ensure:     directory
+    owner:      xplore
+    group:      xplore
+    mode:       '775'
+  '/home/xplore/sig/ia':
+    ensure:     directory
+    owner:      xplore
+    group:      xplore
+    mode:       '775'

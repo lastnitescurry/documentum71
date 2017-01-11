@@ -1,5 +1,5 @@
 ---
-role: contentserver
+role: xploreServer
 
 hosts:
   guiclient:
