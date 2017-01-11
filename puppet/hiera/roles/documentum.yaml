@@ -40,10 +40,10 @@ documentum::contentserver::repository:
   repository_service:    'dm_fcms'
   repository_desc:       'auto repo build'
   bof_registry_password: '1234qwer'
-  db_user:               'fcms_repo'
-  db_password:           'fcms_repo'
+  db_user:               'fcmsdb'
+  db_password:           'fcmsdb'
   db_connection:         'orcl'
-  db_indexspace:         'fcms_repo'
+  db_indexspace:         'fcms'
 
 # UNIX folders and files
 file:

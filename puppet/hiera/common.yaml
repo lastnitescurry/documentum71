@@ -36,6 +36,6 @@ file:
     ensure:     directory
 
 hosts:
-  orcl.localdomain:
+  ol7.localdomain:
     ip: 172.16.209.230
     host_aliases: db
