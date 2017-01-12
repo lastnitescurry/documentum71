@@ -8,12 +8,8 @@
 
 :hierarchy:
 #  - "%{machine_env}/%{machine_role}"
-#  - "roles/%{role}"
-
   - "hosts/%{hostname}"
-  - roles/applications
-  - roles/documentum
-  - roles/oracleclient
+  - "roles/%{role}"
   - common
 
 :merge_behavior: deeper

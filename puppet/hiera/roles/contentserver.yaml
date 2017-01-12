@@ -1,5 +1,4 @@
-  ---
-
+---
 # Puppet Classes to load and execute
 classes:
   - oracle::12c::client
