@@ -31,7 +31,8 @@ group:
     ensure:     present
   dmadmin:
     ensure:     present
-
+  oinstall:
+    ensure:     present
 # UNIX users
 user:
   oracle:
@@ -44,19 +45,19 @@ user:
     groups:
                 - dba
                 - oinstall
-    dmadmin:
-      ensure:     present
-      managehome: true
-      comment:    Documentum Content Server Install Owner
-      shell:      '/bin/bash'
-      password:   "$1$uwPiRsox$GEe9mUGEav92rx4ooq6Nf." # vagrant
-      gid:        dmadmin
-      groups:
-                  - dba
-                  - wheel
-      require:
-                  - Group[dba]
-                  - Group[wheel]
+  dmadmin:
+    ensure:     present
+    managehome: true
+    comment:    Documentum Content Server Install Owner
+    shell:      '/bin/bash'
+    password:   "$1$uwPiRsox$GEe9mUGEav92rx4ooq6Nf." # vagrant
+    gid:        dmadmin
+    groups:
+                - dba
+                - wheel
+    require:
+                - Group[dba]
+                - Group[wheel]
 
 # UNIX folders and files
 file:

@@ -1,6 +1,5 @@
 ---
 role: contentserver
-
 hosts:
   guiclient:
     ensure:   present
