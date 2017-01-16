@@ -1,8 +1,8 @@
-  ---
+---
 
 # Puppet Classes to load and execute
 classes:
-
+  - xplore
 # UNIX users
 user:
   xplore:
@@ -11,7 +11,11 @@ user:
     comment:    xPlore Install user
     shell:      '/bin/bash'
     password:   "$1$uwPiRsox$GEe9mUGEav92rx4ooq6Nf." # vagrant
-    gid:        dba
+    gid:        xplore
+
+group:
+  xplore:
+    ensure:     present
 
 # UNIX folders and files
 file:
@@ -30,6 +34,11 @@ file:
     group:      xplore
     mode:       '775'
   '/home/xplore/sig':
+    ensure:     directory
+    owner:      xplore
+    group:      xplore
+    mode:       '775'
+  '/home/xplore/sig/server':
     ensure:     directory
     owner:      xplore
     group:      xplore

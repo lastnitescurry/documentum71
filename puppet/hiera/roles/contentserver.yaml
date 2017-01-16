@@ -33,6 +33,7 @@ group:
     ensure:     present
   oinstall:
     ensure:     present
+
 # UNIX users
 user:
   oracle:
