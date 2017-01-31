@@ -7,22 +7,25 @@ classes:
   - documentum
 
 # Repository Configuration
-documentum::contentserver::repository:
-  ensure:                'file'
-  documentum:            '/u01/app/documentum'
-  version:               '7.3'
-  installer:             '/u01/app/documentum/product/7.3/install'
-  docbroker_port:        '1489'
-  docbroker_name:        'Docbroker'
-  repository_name:       'FCMS'
-  repository_id:         '20170110'
-  repository_service:    'dm_fcms'
-  repository_desc:       'auto repo build'
-  bof_registry_password: '1234qwer'
-  db_user:               'fcmsdb'
-  db_password:           'fcmsdb'
-  db_connection:         'orcl'
-  db_indexspace:         'fcms'
+
+documentum::contentserver::repository::ensure:                'file'
+documentum::contentserver::repository::documentum:            '/u01/app/documentum'
+documentum::contentserver::repository::version:               '7.3'
+documentum::contentserver::repository::installer:             '/u01/app/documentum/product/7.3/install'
+documentum::contentserver::repository::docbroker_port:        '1489'
+documentum::contentserver::repository::docbroker_name:        'Docbroker'
+documentum::contentserver::repository::docbroker_host:        'dctm.local'
+documentum::contentserver::repository::documentum_data:       '/vagrant/repositorydata'
+documentum::contentserver::repository::repository_name:       'FCMS'
+documentum::contentserver::repository::repository_id:         '10170110'
+documentum::contentserver::repository::repository_service:    'dm_fcms'
+documentum::contentserver::repository::repository_desc:       'auto repo build'
+documentum::contentserver::repository::bof_registry_password: '1234qwer'
+documentum::contentserver::repository::db_user:               'fcmsdb'
+documentum::contentserver::repository::db_password:           'fcmsdb'
+documentum::contentserver::repository::db_connection:         'orcl'
+documentum::contentserver::repository::db_tablespace:         'fcms'
+documentum::contentserver::repository::service_name:          'jms'
 
 
 # UNIX groups
