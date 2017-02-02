@@ -36,6 +36,15 @@ documentum::db_password:           fcmsdb
 documentum::db_tablespace:         fcms
 documentum::db_connection:         orcl
 
+oracle::12c::client::oracle_home:        /u01/app/oracle/product/12.1/client
+oracle::12c::client::oracle_base:        /u01/app/oracle
+oracle::12c::client::installer_location: /home/oracle/sig/client
+oracle::12c::client::source_location:    /opt/media
+oracle::12c::client::dbhostname:         ol7.localdomain
+oracle::12c::client::dbport:             1521
+oracle::12c::client::servicename:        orcl.localdomain
+oracle::12c::client::sid:                orcl
+
 # UNIX groups
 group:
   dba:
