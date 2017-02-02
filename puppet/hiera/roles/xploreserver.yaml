@@ -4,6 +4,39 @@
 classes:
   - xplore
 # UNIX users
+
+xplore::installer_location:  /home/xplore/sig
+xplore::source_location:     /opt/media
+xplore::xplore_home:         /u01/app/xplore
+xplore::version:             1.6
+xplore::xplore_owner:        xplore
+xplore::xplore_group:        xplore
+xplore::xplore_data:         /u01/app/xplore/data
+xplore::xplore_config:       /u01/app/xplore/config
+
+xplore::dsearch_required:    true
+xplore::dsearch_service:     PrimaryDsearch
+xplore::dsearch_host:        xplore.local
+xplore::dsearch_port:        93
+xplore::dsearch_admin:       admin
+xplore::dsearch_password:    1234qwer
+
+xplore::ia_required:         true
+xplore::ia_service_name:     IndexAgent
+xplore::ia_host:             xplore.local
+xplore::ia_port:             9200
+xplore::ia_password:         1234qwer
+xplore::ia_storage:          /u01/app/xplore/iastore
+
+xplore::repository:          fcms
+xplore::repository_user:     dmadmin
+xplore::repository_password: vagrant
+xplore::docbroker_host:      dctm.local
+xplore::docbroker_port:      1489
+xplore::globalrepo:          fcms
+xplore::globaluser:          dm_bof_registry
+xplore::globalpassword:      1234qwer
+
 user:
   xplore:
     ensure:     present
