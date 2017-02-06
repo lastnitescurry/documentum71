@@ -18,14 +18,8 @@ package:
   unzip:
     ensure:     installed
 
-# https://github.com/puppetlabs/puppetlabs-firewall/blob/master/manifests/init.pp
-firewall::ensure: stopped
-
 service:
-  iptables:
-    ensure:     stopped
-    enable:     false
-  ip6tables:
+  firewalld:
     ensure:     stopped
     enable:     false
 

@@ -174,19 +174,19 @@ file:
 
 # UNIX services. /etc/services file
 etc_services:
-  dm_fcms/tcp:
+  dm_repo/tcp:
     ensure:   present
     port:     '60000'
-    comment:  EMC Documentum Repository - fcms
-  dm_fcms/udp:
+    comment:  EMC Documentum Repository
+  dm_repo/udp:
     ensure:   present
     port:     '60000'
-    comment:  EMC Documentum Repository - fcms
-  dm_fcms_s/tcp:
+    comment:  EMC Documentum Repository
+  dm_repo_s/tcp:
     ensure:   present
     port:     '60001'
-    comment:  EMC Documentum Repository - fcms
-  dm_fcms_s/udp:
+    comment:  EMC Documentum Repository
+  dm_repo_s/udp:
     ensure:   present
     port:     '60001'
-    comment:  EMC Documentum Repository - fcms
+    comment:  EMC Documentum Repository
