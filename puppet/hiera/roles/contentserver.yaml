@@ -4,37 +4,37 @@ classes:
   - oracle::12c::client
   - swap_file
   - etc_services::hiera
-  - documentum
+  - documentum::contentserver
 
 # Repository Configuration
 
-documentum::installer_location:    /home/dmadmin/sig
-documentum::source_location:       /opt/media
-documentum::documentum:            /u01/app/documentum
-documentum::dctm_owner:            dmadmin
-documentum::dctm_group:            dmadmin
-documentum::version:               7.3
-documentum::jms_port:              9080
-documentum::jms_service:           jms
-documentum::bof_registry_password: 1234qwer
-documentum::oracle_home:           /u01/app/oracle/product/12.1/client
+documentum::contentserver::installer_location:    /home/dmadmin/sig
+documentum::contentserver::source_location:       /opt/media
+documentum::contentserver::documentum:            /u01/app/documentum
+documentum::contentserver::dctm_owner:            dmadmin
+documentum::contentserver::dctm_group:            dmadmin
+documentum::contentserver::version:               7.3
+documentum::contentserver::jms_port:              9080
+documentum::contentserver::jms_service:           jms
+documentum::contentserver::bof_registry_password: 1234qwer
+documentum::contentserver::oracle_home:           /u01/app/oracle/product/12.1/client
 
-documentum::docbroker_required:    true
-documentum::docbroker_host:        dctm.local
-documentum::docbroker_port:        1489
-documentum::docbroker_name:        Docbroker
+documentum::contentserver::docbroker_required:    true
+documentum::contentserver::docbroker_host:        dctm.local
+documentum::contentserver::docbroker_port:        1489
+documentum::contentserver::docbroker_name:        Docbroker
 
-documentum::repository_required:   true
-documentum::repository_name:       fcms
-documentum::repository_id:         10171212
-documentum::repository_service:    dm_fcms
-documentum::repository_desc:       FCMS repository
-documentum::repository_data_dir:   /u01/app/documentum/data
-documentum::repsoitory_host:       dctm.local
-documentum::db_user:               fcmsdb
-documentum::db_password:           fcmsdb
-documentum::db_tablespace:         fcms
-documentum::db_connection:         orcl
+documentum::contentserver::repository_required:   true
+documentum::contentserver::repository_name:       fcms
+documentum::contentserver::repository_id:         10171212
+documentum::contentserver::repository_service:    dm_fcms
+documentum::contentserver::repository_desc:       FCMS repository
+documentum::contentserver::repository_data_dir:   /u01/app/documentum/data
+documentum::contentserver::repsoitory_host:       dctm.local
+documentum::contentserver::db_user:               fcmsdb
+documentum::contentserver::db_password:           fcmsdb
+documentum::contentserver::db_tablespace:         fcms
+documentum::contentserver::db_connection:         orcl
 
 oracle::12c::client::oracle_home:        /u01/app/oracle/product/12.1/client
 oracle::12c::client::oracle_base:        /u01/app/oracle
