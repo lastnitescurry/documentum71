@@ -25,15 +25,15 @@ documentum::contentserver::docbroker_port:        1489
 documentum::contentserver::docbroker_name:        Docbroker
 
 documentum::contentserver::repository_required:   true
-documentum::contentserver::repository_name:       fcms
+documentum::contentserver::repository_name:       repo
 documentum::contentserver::repository_id:         10171212
-documentum::contentserver::repository_service:    dm_fcms
-documentum::contentserver::repository_desc:       FCMS repository
+documentum::contentserver::repository_service:    dm_repo
+documentum::contentserver::repository_desc:       Repository
 documentum::contentserver::repository_data_dir:   /u01/app/documentum/data
 documentum::contentserver::repsoitory_host:       dctm.local
-documentum::contentserver::db_user:               fcmsdb
-documentum::contentserver::db_password:           fcmsdb
-documentum::contentserver::db_tablespace:         fcms
+documentum::contentserver::db_user:               repodb
+documentum::contentserver::db_password:           repodb
+documentum::contentserver::db_tablespace:         repo
 documentum::contentserver::db_connection:         orcl
 
 oracle::12c::client::oracle_home:        /u01/app/oracle/product/12.1/client

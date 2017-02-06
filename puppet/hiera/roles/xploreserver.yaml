@@ -28,12 +28,12 @@ documentum::xplore::ia_port:             9200
 documentum::xplore::ia_password:         1234qwer
 documentum::xplore::ia_storage:          /u01/app/xplore/iastore
 
-documentum::xplore::repository:          fcms
+documentum::xplore::repository:          repo
 documentum::xplore::repository_user:     dmadmin
 documentum::xplore::repository_password: vagrant
 documentum::xplore::docbroker_host:      dctm.local
 documentum::xplore::docbroker_port:      1489
-documentum::xplore::globalrepo:          fcms
+documentum::xplore::globalrepo:          repo
 documentum::xplore::globaluser:          dm_bof_registry
 documentum::xplore::globalpassword:      1234qwer
 
