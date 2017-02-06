@@ -42,8 +42,8 @@ oracle::12c::client::installer_location: /home/oracle/sig/client
 oracle::12c::client::source_location:    /opt/media
 oracle::12c::client::dbhostname:         ol7.localdomain
 oracle::12c::client::dbport:             1521
-oracle::12c::client::servicename:        orcl.localdomain
-oracle::12c::client::sid:                orcl
+oracle::12c::client::servicename:        orcl12c.us.oracle.com
+oracle::12c::client::sid:                orcl12c
 
 # UNIX groups
 group:
