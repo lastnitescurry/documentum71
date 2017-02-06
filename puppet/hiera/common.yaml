@@ -36,12 +36,12 @@ file:
     ensure:     directory
 
 hosts:
-  ol7.localdomain:
-    ip: 172.16.209.230
+  db.local:
+    ip: 172.16.209.136
     host_aliases: db
   dctm.local:
-    ip: 172.16.209.240
+    ip: 172.16.209.138
     host_aliases: dctm
   xplore.local:
-    ip: 172.16.209.238
+    ip: 172.16.209.139
     host_aliases: xplore
