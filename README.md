@@ -1,38 +1,20 @@
 # documentum71
 
-Documentum stack on a single server. Based on [dctm-vagrant-puppet](https://github.com/lastnitescurry/dctm-vagrant-puppet) project. 
-
-Now its time to 
-+ move hard coded values out of modules and into hiera
-+ break the blob of modules into some reusable chunks
-
+Documentum stack on a single server. Based on [dctm-vagrant-puppet](https://github.com/lastnitescurry/dctm-vagrant-puppet) project.
 
 ## Provisioned Application URLS
 
-### Oracle XE Server
-+ [Oracle XE](http://127.0.0.1:8080/apex/f?p=4950:1)
+### Oracle 12C Client
++ Puts 12c client on, however needs a 12c db to point at somewhere
 
 
 ## Puppet
 ###### Install Masterless Puppet
 As root, execute:
 
-    cd /vagrant/packer/scripts
-    chmod u+x *.sh
-    ./puppet.sh
+    setup.sh found in this module, note you might need to edit it to make it work with your set up
 
-###### Install Puppet Modules
-As root, execute:
-
-    cd /vagrant/puppet
-    chmod u+x *.sh
-    ./setup_modules.sh
-
-###### Apply Configurations
-As root, execute:
-
-    cd /vagrant/puppet
-    ./apply.sh
+    Software insatll dir is emc standard, eg <SOFTWARE>/<VERSION>/FILE
 
 ## References
 ###### Masterless Puppet
