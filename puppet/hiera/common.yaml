@@ -13,6 +13,7 @@ group:
 #  dmadmin:
 #    ensure:     present
 
+firewall::ensure: stopped
 
 package:
   unzip:
