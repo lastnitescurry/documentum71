@@ -1,4 +1,4 @@
-yum --assumeyes install git iptables
+yum --assumeyes install git iptables iptables-services
 
 yum --assumeyes install -y curl-devel expat-devel gettext-devel openssl-devel zlib-devel gcc perl-ExtUtils-MakeMaker
 
