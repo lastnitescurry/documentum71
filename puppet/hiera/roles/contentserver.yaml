@@ -1,0 +1,192 @@
+---
+# Puppet Classes to load and execute
+classes:
+  - oracle::12c::client
+  - swap_file
+  - etc_services::hiera
+  - documentum::contentserver
+
+# Repository Configuration
+
+documentum::contentserver::installer_location:    /home/dmadmin/sig
+documentum::contentserver::source_location:       /opt/media
+documentum::contentserver::documentum:            /u01/app/documentum
+documentum::contentserver::dctm_owner:            dmadmin
+documentum::contentserver::dctm_group:            dmadmin
+documentum::contentserver::version:               7.3
+documentum::contentserver::jms_port:              9080
+documentum::contentserver::jms_service:           jms
+documentum::contentserver::bof_registry_password: 1234qwer
+documentum::contentserver::oracle_home:           /u01/app/oracle/product/12.1/client
+
+documentum::contentserver::docbroker_required:    true
+documentum::contentserver::docbroker_host:        dctm.local
+documentum::contentserver::docbroker_port:        1489
+documentum::contentserver::docbroker_name:        Docbroker
+
+documentum::contentserver::repository_required:   true
+documentum::contentserver::repository_name:       repo
+documentum::contentserver::repository_id:         10171212
+documentum::contentserver::repository_service:    dm_repo
+documentum::contentserver::repository_desc:       Repository
+documentum::contentserver::repository_data_dir:   /u01/app/documentum/data
+documentum::contentserver::repsoitory_host:       dctm.local
+documentum::contentserver::db_user:               repodb
+documentum::contentserver::db_password:           repodb
+documentum::contentserver::db_tablespace:         repo
+documentum::contentserver::db_connection:         orcl12c
+
+oracle::12c::client::oracle_home:        /u01/app/oracle/product/12.1/client
+oracle::12c::client::oracle_base:        /u01/app/oracle
+oracle::12c::client::installer_location: /home/oracle/sig/client
+oracle::12c::client::source_location:    /opt/media
+oracle::12c::client::dbhostname:         db.local
+oracle::12c::client::dbport:             1521
+oracle::12c::client::servicename:        db.local
+oracle::12c::client::sid:                orcl12c
+
+# UNIX groups
+group:
+  dba:
+    ensure:     present
+  dmadmin:
+    ensure:     present
+  oinstall:
+    ensure:     present
+
+# UNIX users
+user:
+  oracle:
+    ensure:     present
+    managehome: true
+    comment:    Oracle Install user
+    shell:      '/bin/bash'
+    password:   "$1$uwPiRsox$GEe9mUGEav92rx4ooq6Nf." # vagrant
+    gid:        dba
+    groups:
+                - dba
+                - oinstall
+  dmadmin:
+    ensure:     present
+    managehome: true
+    comment:    Documentum Content Server Install Owner
+    shell:      '/bin/bash'
+    password:   "$1$uwPiRsox$GEe9mUGEav92rx4ooq6Nf." # vagrant
+    gid:        dmadmin
+    groups:
+                - dba
+                - wheel
+    require:
+                - Group[dba]
+                - Group[wheel]
+
+# UNIX folders and files
+file:
+  '/u01':
+    ensure:     directory
+  '/u01/app':
+    ensure:     directory
+  '/u01/app/documentum':
+    ensure:     directory
+    owner:      dmadmin
+    group:      dmadmin
+    mode:       '775'
+  '/u01/app/documentum/shared':
+    ensure:     directory
+    owner:      dmadmin
+    group:      dmadmin
+    mode:       '775'
+  '/u01/app/documentum/shared/config':
+    ensure:     directory
+    owner:      dmadmin
+    group:      dmadmin
+    mode:       '775'
+  '/u01/app/oracle':
+    ensure:     directory
+    owner:      oracle
+    group:      dba
+    mode:       '775'
+  '/u01/app/oraInventory':
+    ensure:     directory
+    owner:      oracle
+    group:      dba
+    mode:       '775'
+  '/u01/app/oracle/product':
+    ensure:     directory
+    owner:      oracle
+    group:      dba
+    mode:       '775'
+  '/u01/app/oracle/product/12.1':
+    ensure:     directory
+    owner:      oracle
+    group:      dba
+    mode:       '775'
+  '/u01/app/oracle/product/12.1/client':
+    ensure:     directory
+    owner:      oracle
+    group:      dba
+    mode:       '775'
+  '/home/dmadmin':
+    ensure:     directory
+    owner:      dmadmin
+    group:      dmadmin
+    mode:       '775'
+  '/home/dmadmin/sig':
+    ensure:     directory
+    owner:      dmadmin
+    group:      dmadmin
+    mode:       '775'
+  '/home/dmadmin/sig/cs':
+    ensure:     directory
+    owner:      dmadmin
+    group:      dmadmin
+    mode:       '775'
+  '/home/dmadmin/sig/csp':
+    ensure:     directory
+    owner:      dmadmin
+    group:      dmadmin
+    mode:       '775'
+  '/home/dmadmin/sig/docbroker':
+    ensure:     directory
+    owner:      dmadmin
+    group:      dmadmin
+    mode:       '775'
+  '/home/dmadmin/sig/repository':
+    ensure:     directory
+    owner:      dmadmin
+    group:      dmadmin
+    mode:       '775'
+  '/home/oracle':
+    ensure:     directory
+    owner:      oracle
+    group:      dba
+    mode:       '775'
+  '/home/oracle/sig':
+    ensure:     directory
+    owner:      oracle
+    group:      dba
+    mode:       '775'
+  '/home/oracle/sig/client':
+    ensure:     directory
+    owner:      oracle
+    group:      dba
+    mode:       '775'
+
+# UNIX services. /etc/services file
+etc_services:
+  dm_repo/tcp:
+    ensure:   present
+    port:     '60000'
+    comment:  EMC Documentum Repository
+  dm_repo/udp:
+    ensure:   present
+    port:     '60000'
+    comment:  EMC Documentum Repository
+  dm_repo_s/tcp:
+    ensure:   present
+    port:     '60001'
+    comment:  EMC Documentum Repository
+  dm_repo_s/udp:
+    ensure:   present
+    port:     '60001'
+    comment:  EMC Documentum Repository

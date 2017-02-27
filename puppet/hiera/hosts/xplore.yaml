@@ -1,0 +1,9 @@
+---
+role: xploreserver
+
+hosts:
+  guiclient:
+    ensure:   present
+    ip:       192.168.100.11
+    comment:  Minty client
+    host_aliases: minty

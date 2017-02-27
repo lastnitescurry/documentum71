@@ -2,8 +2,9 @@
 
 classes:
   - hieratic
+  - baseconfig
 
-# Add Groups to all roles regardless 
+# Add Groups to all roles regardless
 group:
   wheel:
     ensure:     present
@@ -12,34 +13,14 @@ group:
 #  dmadmin:
 #    ensure:     present
 
-# https://forge.puppet.com/mthibaut/users
-#users_sysadmins:
-#    john:
-#        ensure: present
-#        uid: 1000
-#        gid: staff
-#        groups: - wheel
-#        comment: John Doe
-#        managehome: true
-# https://forge.puppet.com/deric/accounts
-user:
-  brian:
-    ensure:     present
-    managehome: true
-    gid:        wheel
+firewall::ensure: stopped
 
 package:
   unzip:
     ensure:     installed
 
-# https://github.com/puppetlabs/puppetlabs-firewall/blob/master/manifests/init.pp
-firewall::ensure: stopped
-
 service:
-  iptables:
-    ensure:     stopped
-    enable:     false
-  ip6tables:
+  firewalld:
     ensure:     stopped
     enable:     false
 
@@ -49,6 +30,13 @@ file:
   '/u01/app':
     ensure:     directory
 
-# Oracle Client settings for Documentum Content Servers
-oracle::xe::client::db_port: '1521'
-oracle::xe::client::db_host: 'database'
+hosts:
+  db.local:
+    ip: 172.16.209.136
+    host_aliases: db
+  dctm.local:
+    ip: 172.16.209.138
+    host_aliases: dctm
+  xplore.local:
+    ip: 172.16.209.139
+    host_aliases: xplore

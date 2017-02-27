@@ -1,0 +1,93 @@
+---
+
+# Puppet Classes to load and execute
+classes:
+  - documentum::xplore
+# UNIX users
+
+documentum::xplore::installer_location:  /home/xplore/sig
+documentum::xplore::source_location:     /opt/media
+documentum::xplore::xplore_home:         /u01/app/xplore
+documentum::xplore::version:             1.6
+documentum::xplore::xplore_owner:        xplore
+documentum::xplore::xplore_group:        xplore
+documentum::xplore::xplore_data:         /u01/app/xplore/data
+documentum::xplore::xplore_config:       /u01/app/xplore/config
+
+documentum::xplore::dsearch_required:    true
+documentum::xplore::dsearch_service:     PrimaryDsearch
+documentum::xplore::dsearch_host:        xplore.local
+documentum::xplore::dsearch_port:        93
+documentum::xplore::dsearch_admin:       admin
+documentum::xplore::dsearch_password:    1234qwer
+
+documentum::xplore::ia_required:         true
+documentum::xplore::ia_service_name:     IndexAgent
+documentum::xplore::ia_host:             xplore.local
+documentum::xplore::ia_port:             9200
+documentum::xplore::ia_password:         1234qwer
+documentum::xplore::ia_storage:          /u01/app/xplore/iastore
+
+documentum::xplore::repository:          repo
+documentum::xplore::repository_user:     dmadmin
+documentum::xplore::repository_password: vagrant
+documentum::xplore::docbroker_host:      dctm.local
+documentum::xplore::docbroker_port:      1489
+documentum::xplore::globalrepo:          repo
+documentum::xplore::globaluser:          dm_bof_registry
+documentum::xplore::globalpassword:      1234qwer
+
+user:
+  xplore:
+    ensure:     present
+    managehome: true
+    comment:    xPlore Install user
+    shell:      '/bin/bash'
+    password:   "$1$uwPiRsox$GEe9mUGEav92rx4ooq6Nf." # vagrant
+    gid:        xplore
+
+group:
+  xplore:
+    ensure:     present
+
+# UNIX folders and files
+file:
+  '/u01':
+    ensure:     directory
+  '/u01/app':
+    ensure:     directory
+  '/u01/app/xplore':
+    ensure:     directory
+    owner:      xplore
+    group:      xplore
+    mode:       '775'
+  '/home/xplore':
+    ensure:     directory
+    owner:      xplore
+    group:      xplore
+    mode:       '775'
+  '/home/xplore/sig':
+    ensure:     directory
+    owner:      xplore
+    group:      xplore
+    mode:       '775'
+  '/home/xplore/sig/server':
+    ensure:     directory
+    owner:      xplore
+    group:      xplore
+    mode:       '775'
+  '/home/xplore/sig/xplore':
+    ensure:     directory
+    owner:      xplore
+    group:      xplore
+    mode:       '775'
+  '/home/xplore/sig/dsearch':
+    ensure:     directory
+    owner:      xplore
+    group:      xplore
+    mode:       '775'
+  '/home/xplore/sig/ia':
+    ensure:     directory
+    owner:      xplore
+    group:      xplore
+    mode:       '775'

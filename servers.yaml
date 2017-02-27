@@ -5,7 +5,7 @@
   role: allinone
   ram:  6288
   cpus: 2
-  desc: Single stack, Oracle XE, Documentum 7.1 Content Server and Admin client on tomcat 7
+  desc: Single stack, Oracle XE, Documentum 7.3 Content Server and Admin client on tomcat 7
   forwarded_port:
     oracle_web:
        host:  8080
@@ -13,10 +13,6 @@
     cs_jms:
        host:  9080
        guest: 9080
-  synced_folder:
-    software:
-       local:   D:/Software
-       remote:  /opt/software
   provision:
 #    remove_existing_swap_file:
 #      inline:   swapoff -v /dev/dm-1
